@@ -9,13 +9,18 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var dataModel: [CharacterModel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         Client.getCharacters { character, error in
-            guard let firstCharacter = character?[0] else {return}
-            print(firstCharacter)
+            guard let firstCharacter = character else {return}
+            //print(firstCharacter)
+            self.dataModel = firstCharacter
+            print(self.dataModel)
         }
+        
         
     }
 
